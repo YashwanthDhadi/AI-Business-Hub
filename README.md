@@ -2,6 +2,36 @@
 
 **One AI workforce, configured per business.**
 
+## Live links
+
+| What | URL |
+| --- | --- |
+| Frontend (Vercel) | https://ai-business-hub-pcd5.vercel.app |
+| Demo customer chat | https://ai-business-hub-pcd5.vercel.app/chat/fitzone |
+| Backend health (Render) | https://ai-business-hub-2guw.onrender.com/health |
+| API docs (Render) | https://ai-business-hub-2guw.onrender.com/docs |
+
+> The backend runs on Render's free tier and sleeps when idle. The first
+> request can take up to a minute while it wakes up.
+
+## Which LLMs, and for what
+
+| Job | Provider | Model | Why |
+| --- | --- | --- | --- |
+| Routing: picks which capabilities a message needs | Google AI Studio | `gemini-3.5-flash-lite` | Fast, returns small JSON, separate free quota from chat |
+| Chat agent: answers the customer and calls tools | OpenRouter | `google/gemma-4-31b-it:free` | Free tier, supports tool calling |
+| Chat fallbacks, used if the main model is rate-limited | OpenRouter | `nvidia/nemotron-3-super-120b-a12b:free`, `nex-agi/nex-n2.5-pro:free`, `openrouter/free` | Keeps chat working when the free tier limits the main model |
+| Voice: speech-to-text | Groq | `whisper-large-v3-turbo` | Free, fast transcription |
+
+The models only *suggest* what to do. Application code decides what is
+allowed, and the database is the source of truth.
+
+## Supabase schema
+
+The full schema is plain SQL in [`database/migrations/`](database/migrations/)
+(`001` to `008`, applied in order), with demo data in
+[`database/seed.sql`](database/seed.sql).
+
 A multi-tenant AI platform for small Indian businesses: salons, gyms, retail
 shops, clinics and coaching centres. A customer opens a chat link, types or
 speaks, and an assistant that knows *that* business answers with its prices,
@@ -233,8 +263,8 @@ is **not** tested are in **[TEST-REPORT.md](docs/guides/TEST-REPORT.md)**.
 - Automatic payment confirmation: plain UPI cannot notify anyone
 - Merging duplicate customers
 
-**Known gaps:** the screens have never been clicked through in a browser; there
-are no component or end-to-end browser tests; agent repeatability has not been
+**Known gaps:** the screens have been tested by hand on the live deployment,
+but there are no automated component or end-to-end browser tests; agent repeatability has not been
 measured because the free tier rate-limited every attempt; and no real UPI
 payment has ever been made.
 
