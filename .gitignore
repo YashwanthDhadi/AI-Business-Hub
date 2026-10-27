@@ -1,0 +1,42 @@
+# ---------------------------------------------------------------- node
+# No leading slash, so this matches frontend/node_modules too.
+node_modules/
+.next/
+out/
+build/
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# -------------------------------------------------------------- python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# ----------------------------------------------------------------- env
+# Real secrets never enter git. Only .env.example is tracked.
+.env
+.env.*
+!.env.example
+
+# --------------------------------------------------------------- tools
+.vercel
+supabase/.branches
+supabase/.temp
+
+# ------------------------------------------------------------- outputs
+test-results/
+coverage/
+htmlcov/
+.coverage
+.coverage.*
+
+# ------------------------------------------------------------ os/editor
+.DS_Store
+Thumbs.db
+*.pem
+npm-debug.log*

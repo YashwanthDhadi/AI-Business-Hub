@@ -1,0 +1,15 @@
+# Normalise line endings so Windows and CI never disagree about a file.
+* text=auto eol=lf
+
+# Binary assets must never be normalised.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
+
+# Generated files: collapse in diffs and exclude from language stats.
+package-lock.json linguist-generated=true -diff

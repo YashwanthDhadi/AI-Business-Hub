@@ -1,0 +1,103 @@
+import { BusinessProfile, AssistantSettings, MembershipPlan } from "@/types";
+
+export const mockBusiness: BusinessProfile = {
+  id: "biz-fitzone-001",
+  name: "FitZone Fitness & Wellness Club",
+  slug: "fitzone",
+  type: "Fitness & Gym",
+  tagline: "High-energy personal training, group classes & holistic wellness.",
+  description: "FitZone is a premier fitness center offering state-of-the-art training facilities, certified personal trainers, HIIT & yoga classes, and tailored nutritional guidance.",
+  email: "support@fitzone.example.com",
+  phone: "+91 98234 56780",
+  address: "742 Evergreen Terrace, Suite 100",
+  city: "Austin, TX",
+  currency: "INR",
+  logoUrl: "/icons/fitzone-logo.svg",
+  workingHours: [
+    { day: "Monday", isOpen: true, openTime: "06:00 AM", closeTime: "10:00 PM" },
+    { day: "Tuesday", isOpen: true, openTime: "06:00 AM", closeTime: "10:00 PM" },
+    { day: "Wednesday", isOpen: true, openTime: "06:00 AM", closeTime: "10:00 PM" },
+    { day: "Thursday", isOpen: true, openTime: "06:00 AM", closeTime: "10:00 PM" },
+    { day: "Friday", isOpen: true, openTime: "06:00 AM", closeTime: "09:00 PM" },
+    { day: "Saturday", isOpen: true, openTime: "07:00 AM", closeTime: "08:00 PM" },
+    { day: "Sunday", isOpen: true, openTime: "08:00 AM", closeTime: "06:00 PM" },
+  ],
+  services: [
+    {
+      id: "srv-1",
+      name: "1-on-1 Personal Training Session",
+      description: "Custom 60-minute training session with an elite certified personal coach.",
+      durationMinutes: 60,
+      price: 75,
+      category: "Personal Training",
+    },
+    {
+      id: "srv-2",
+      name: "HIIT Performance Bootcamp",
+      description: "High-intensity calorie burning interval training for all fitness levels.",
+      durationMinutes: 45,
+      price: 30,
+      category: "Group Class",
+    },
+    {
+      id: "srv-3",
+      name: "Vinyasa Flow Yoga",
+      description: "Breath-synchronized moving meditation to improve balance and flexibility.",
+      durationMinutes: 60,
+      price: 25,
+      category: "Wellness",
+    },
+    {
+      id: "srv-4",
+      name: "Comprehensive Nutrition Consultation",
+      description: "Personalized macronutrient breakdown and healthy meal planning.",
+      durationMinutes: 45,
+      price: 60,
+      category: "Nutrition",
+    },
+    {
+      id: "srv-5",
+      name: "Full Body Composition & Fitness Assessment",
+      description: "InBody scan, body fat analysis, and cardio endurance baseline benchmark.",
+      durationMinutes: 30,
+      price: 40,
+      category: "Assessment",
+    },
+  ],
+  enabledCapabilities: [
+    "Customer Support",
+    "Bookings",
+    "Payments",
+    "Inventory",
+    "Reports",
+    "Documents",
+    "Communication",
+  ],
+};
+
+export const mockAssistantSettings: AssistantSettings = {
+  assistantName: "Zoe",
+  greeting: "Hi! I'm Zoe, FitZone's assistant. I can book sessions, share prices and answer questions, day or night.",
+  tone: "friendly",
+  businessDescription: mockBusiness.description,
+  faqs: [
+    { id: "faq-1", question: "Is there parking?", answer: "Yes, free member parking is behind the building at 742 Evergreen Terrace." },
+    { id: "faq-2", question: "Do you offer a free trial?", answer: "Yes! Your first group class is free. Just book any HIIT or yoga class and mention it's your trial." },
+    { id: "faq-3", question: "What is your cancellation policy?", answer: "Cancel at least 12 hours before your session for a full credit. Late cancellations are charged in full." },
+    { id: "faq-4", question: "Do you have student discounts?", answer: "Students get 10% off personal training with a valid student ID." },
+    { id: "faq-5", question: "Are towels provided?", answer: "Yes, towels are free for Premium members and ₹2 for everyone else." },
+  ],
+  allowBookings: true,
+  requireBookingApproval: false,
+  handoffToStaff: true,
+  voiceInputEnabled: true,
+  chatEnabled: true,
+  brandColor: "#4f46e5",
+};
+
+export const mockMembershipPlans: MembershipPlan[] = [
+  { id: "plan-basic", name: "Basic", pricePerMonth: 39, includes: "Gym floor access, 6 AM to 10 PM" },
+  { id: "plan-pack", name: "Class Pack (10)", pricePerMonth: 180, includes: "10 group classes, valid 3 months" },
+  { id: "plan-yoga", name: "Yoga Unlimited", pricePerMonth: 100, includes: "Unlimited yoga classes" },
+  { id: "plan-premium", name: "Premium Unlimited", pricePerMonth: 149, includes: "All classes + 2 personal training sessions" },
+];
